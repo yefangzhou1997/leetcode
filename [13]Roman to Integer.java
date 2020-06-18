@@ -49,7 +49,5 @@ public int romanToInt(String s) {
 
             }
         }//for_2
-
-
         return count;
     }//function
