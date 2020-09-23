@@ -52,3 +52,26 @@ public int majorityElement(int[] nums) {
         }
         return nums[maxIndex];
     }
+
+
+public int majorityElement(int[] nums) {
+
+        if (nums.length == 1) {
+            return nums[0];
+        }
+
+        int n = nums.length / 2;
+
+        int[] temp = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] == nums[j]) {
+                    temp[j]++;
+                    if (temp[j] >= n) return nums[j];
+                    break;
+                }
+            }
+        }
+
+        return 0;
+    }
