@@ -19,3 +19,23 @@ public ListNode reverseList(ListNode head) {
         head.next = null;
         return r;
     }
+
+
+public ListNode reverseList(ListNode head) {
+        if (head == null) return null;
+
+        ListNode t = new ListNode();
+        t.val = head.val;
+        t.next = null;
+
+        ListNode t2 = null;
+        while (head.next != null) {
+            t2 = new ListNode();
+            t2.val = head.next.val;
+            t2.next = t;
+            t = t2;
+            head = head.next;
+        }
+        if(t2==null) return t;
+        return t2;
+    }
