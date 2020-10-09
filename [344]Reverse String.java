@@ -6,3 +6,12 @@ public void reverseString(char[] s) {
             s[len - 1 - i] = temp;
         }
     }
+
+public void reverseString(char[] s) {
+        int a = 0, b = s.length - 1;
+        while (b > a) {
+            char t = s[a];
+            s[a++] = s[b];
+            s[b--] = t;
+        }
+    }
