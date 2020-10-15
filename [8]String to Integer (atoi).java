@@ -1,34 +1,41 @@
 public int myAtoi(String s) {
+
         if (s.equals("") || s == null) return 0;
 
         int number = 0;
         int letter = 0;
-        int negtivePositive = 0;
-        int spaceAfterNumberNegtivePositive = 0;
+        int sign = 0;
+        int spaceAfterNumberSign = 0;
 
         String r = new String();
 
         for (int i = 0; i < s.length(); i++) {
+
             char t = s.charAt(i);
 
             if (isLetter(t)) {
                 if (number == 0) {
                     return 0;
                 }
-                letter = 1;
-            }
 
-            if (isSpace(t)) {
-                if (number == 1 || negtivePositive == 1) {
-                    spaceAfterNumberNegtivePositive = 1;
+                letter = 1;
+
+                if(number == 1) {
+                    break;
                 }
             }
 
-            if (isNegitivePositveSymbol(t)) {
-                if (number == 0 && negtivePositive == 0) {
+            if (isSpace(t)) {
+                if (number == 1 || sign == 1) {
+                    spaceAfterNumberSign = 1;
+                }
+            }
+
+            if (isSign(t)) {
+                if (number == 0 && sign == 0) {
                     r += t;
-                    negtivePositive = 1;
-                } else if (number == 0 && negtivePositive == 1) {
+                    sign = 1;
+                } else if (number == 0 && sign == 1) {
                     return 0;
                 } else if (number == 1) {
                     break;
@@ -36,10 +43,10 @@ public int myAtoi(String s) {
             }
 
             if (isNumber(t)) {
-                if (letter == 0 && spaceAfterNumberNegtivePositive == 0) {
+                if (letter == 0 && spaceAfterNumberSign == 0) {
                     number = 1;
                     r = r + t;
-                } else if (letter == 1 && number == 0) {
+                } else {
                     break;
                 }
             }
@@ -67,7 +74,7 @@ public int myAtoi(String s) {
         return false;
     }
 
-    private boolean isNegitivePositveSymbol(char c) {
+    private boolean isSign(char c) {
         if (c == 45 || c == 43) return true;
         return false;
     }
