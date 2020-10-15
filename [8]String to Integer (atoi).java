@@ -1,7 +1,7 @@
 public int myAtoi(String s) {
         if (s.equals("")) return 0;
 
-        int number = 0, letter = 0, sign = 0, spaceAfterNumberSign = 0;
+        int number = 0, sign = 0;
         String r = new String();
 
         for (int i = 0; i < s.length(); i++) {
@@ -10,10 +10,9 @@ public int myAtoi(String s) {
             if (isLetter(t)) {
                 if (number == 0) return 0;
                 if (number == 1) break;
-                letter = 1;
             }
 
-            if (isSpace(t)) if (number == 1 || sign == 1) spaceAfterNumberSign = 1;
+            if (isSpace(t)) if (number == 1 || sign == 1) break;
 
             if (isSign(t)) {
                 if (number == 0 && sign == 0) {
@@ -25,10 +24,8 @@ public int myAtoi(String s) {
             }
 
             if (isNumber(t)) {
-                if (letter == 0 && spaceAfterNumberSign == 0) {
                     number = 1;
                     r += t;
-                } else break;
             }
 
         }//for
@@ -56,8 +53,8 @@ public int myAtoi(String s) {
         return false;
     }
 
-    private int returnR(String r) {
-        if (Double.valueOf(r) > Integer.MAX_VALUE) return Integer.MAX_VALUE;
-        else if (Double.valueOf(r) < Integer.MIN_VALUE) return Integer.MIN_VALUE;
-        else return Integer.valueOf(r);
+    private int returnR(String s) {
+        if (Double.valueOf(s) >= Integer.MAX_VALUE) return Integer.MAX_VALUE;
+        else if (Double.valueOf(s) <= Integer.MIN_VALUE) return Integer.MIN_VALUE;
+        else return Integer.valueOf(s);
     }
