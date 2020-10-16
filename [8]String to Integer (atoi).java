@@ -24,8 +24,8 @@ public int myAtoi(String s) {
             }
 
             if (isNumber(t)) {
-                    number = 1;
-                    r += t;
+                number = 1;
+                r += t;
             }
 
         }//for
@@ -34,27 +34,24 @@ public int myAtoi(String s) {
     }
 
     private boolean isNumber(char c) {
-        if (c > 47 && c < 58) return true;
-        return false;
+        return c > 47 && c < 58 ? true : false;
     }
 
     private boolean isSpace(char c) {
-        if (c == 32) return true;
-        return false;
+        return c == ' ' ? true : false;
     }
 
     private boolean isSign(char c) {
-        if (c == 45 || c == 43) return true;
-        return false;
+        return c == '+' || c == '-' ? true : false;
     }
 
     private boolean isLetter(char c) {
-        if (c > 57 || (c < 48 && c != 45 && c != 43 && c != 32)) return true;
-        return false;
+        return c > 57 || (c < 48 && c != '-' && c != '+' && c != ' ') ? true : false;
     }
 
     private int returnR(String s) {
-        if (Double.valueOf(s) >= Integer.MAX_VALUE) return Integer.MAX_VALUE;
-        else if (Double.valueOf(s) <= Integer.MIN_VALUE) return Integer.MIN_VALUE;
-        else return Integer.valueOf(s);
+        double t = Double.valueOf(s);
+        if (t >= Integer.MAX_VALUE) return Integer.MAX_VALUE;
+        else if (t <= Integer.MIN_VALUE) return Integer.MIN_VALUE;
+        else return (int) t;
     }
