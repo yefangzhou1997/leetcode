@@ -1,6 +1,4 @@
 public int myAtoi(String s) {
-        if (s.equals("")) return 0;
-
         int number = 0, sign = 0;
         String r = new String();
 
