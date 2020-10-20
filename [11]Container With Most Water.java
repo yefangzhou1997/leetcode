@@ -12,3 +12,14 @@ public int maxArea(int[] height) {
         }
         return r;
     }
+
+public int maxArea(int[] height) {
+        int i = 0, j = height.length - 1, r = 0;
+
+        while (true) {
+            if (i == j) break;
+            int t = (j - i) * (height[i] <= height[j] ? height[i++] : height[j--]);
+            if (r < t) r = t;
+        }
+        return r;
+    }
