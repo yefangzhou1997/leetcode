@@ -22,3 +22,26 @@
         }
         return true;
     }
+
+
+
+    public String longestPalindrome(String s) {
+        String res = "";
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int l = i, r = i;
+            while (l >= 0 && s.charAt(l) == c) l--;
+            while (r < s.length() && s.charAt(r) == c) r++;
+
+            while (l >= 0 && r < s.length()) {
+                if (s.charAt(l) != s.charAt(r)) break;
+                l--;
+                r++;
+            }
+
+            String t = s.substring(l + 1, r);
+            res = t.length() > res.length() ? t : res;
+
+        }
+        return res;
+    }
