@@ -1,4 +1,24 @@
-  public boolean isValidSudoku(char[][] board) {
+    public boolean isValidSudoku(char[][] board) {
+        int[][] row = new int[9][9];
+        int[][] col = new int[9][9];
+        int[][] blk = new int[9][9];
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] != '.') {
+                    int num = board[i][j] - 49;
+                    if (++row[i][num] > 1) return false;
+                    if (++col[j][num] > 1) return false;
+                    if (++blk[(i / 3) * 3 + j / 3][num] > 1) return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+
+public boolean isValidSudoku(char[][] board) {
         for (int i = 0; i < 9; i++) {
             ArrayList<Character> temp = new ArrayList<Character>();
             for (int j = 0; j < 9; j++) {
