@@ -20,3 +20,32 @@ public int[] searchRange(int[] nums, int target) {
         }
         return r;
     }
+
+
+
+    public int[] searchRange(int[] nums, int target) {
+        int[] res = {-1, -1};
+        if (nums.length == 0) return res;
+
+        int l = 0, r = nums.length - 1;
+
+        while (l < nums.length) {
+            if (nums[l] == target) {
+                res[0] = l;
+                break;
+            }
+            l++;
+        }
+
+        if (res[0] == -1) return res;
+
+        while (r >= l) {
+            if (nums[r] == target) {
+                res[1] = r;
+                break;
+            }
+            r--;
+        }
+
+        return res;
+    }
